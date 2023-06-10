@@ -22,7 +22,7 @@
                 return;
             }
 
-            const apiUrl = `http://localhost:5000/api/${encodeURIComponent(emailInput)}`;
+            const apiUrl = `http://localhost/api/${encodeURIComponent(emailInput)}`;
 
             fetch(apiUrl)
                 .then(response => response.json())
