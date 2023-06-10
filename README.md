@@ -59,4 +59,4 @@ emailProvider.get(email)
 
 ## License 
 
-MIT
+MIT# email-detect
