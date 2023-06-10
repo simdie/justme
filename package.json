@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/codex-team/email-provider#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "email-provider": "^1.0.1",
     "express": "^4.18.2",
     "freemail": "^1.5.0",
