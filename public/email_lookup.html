@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Email Provider Lookup</title>
+</head>
+
+<body>
+    <h1>Email Provider Lookup</h1>
+    <label for="emailInput">Email:</label>
+    <input type="text" id="emailInput">
+    <button onclick="lookupEmailProvider()">Lookup</button>
+    <div id="result"></div>
+
+    <script>
+        function lookupEmailProvider() {
+            const emailInput = document.getElementById('emailInput').value.trim();
+            const resultElement = document.getElementById('result');
+
+            if (emailInput === '') {
+                resultElement.innerHTML = 'Please enter an email.';
+                return;
+            }
+
+            const apiUrl = `http://localhost:3000/api/${encodeURIComponent(emailInput)}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const serviceName = data.name;
+                    const serviceUrl = data.url;
+
+                    resultElement.innerHTML = `
+                        <strong>Name:</strong> ${serviceName}<br>
+                        <strong>URL:</strong> <a href="${serviceUrl}">${serviceUrl}</a>
+                    `;
+                })
+                .catch(error => {
+                    resultElement.innerHTML = 'Email provider lookup failed: ' + error;
+                });
+        }
+    </script>
+</body>
+
+</html>
